@@ -218,6 +218,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4965351859721936}
   - component: {fileID: 65934264240664504}
+  - component: {fileID: 114437036405455886}
   m_Layer: 0
   m_Name: Ship
   m_TagString: Untagged
@@ -628,7 +629,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1534772313466224}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.39, y: 13.9, z: 10}
+  m_LocalPosition: {x: 0, y: -75, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4172537052968530}
@@ -1712,3 +1713,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114437036405455886
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1534772313466224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff8c420d0b1bf1349ad0062a21398957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 20
+  shipMissile: {fileID: 1570657090135452, guid: b60c2b488e1298e41a3cc7e5de31497c,
+    type: 2}
