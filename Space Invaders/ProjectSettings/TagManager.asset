@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Enemy
   - Base
+  - Alien10
+  - Alien20
+  - Alien30
   layers:
   - Default
   - TransparentFX

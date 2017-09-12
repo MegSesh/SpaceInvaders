@@ -23,7 +23,7 @@ public class LevelEnd : MonoBehaviour {
         if(collider.CompareTag("Enemy"))
         {
             //Application.LoadLevel("LevelEnd");        //Deprecated. Use SceneManager
-            SceneManager.LoadScene("LevelEnd");
+            SceneManager.LoadScene("TitleScreen");
             
         }
     }

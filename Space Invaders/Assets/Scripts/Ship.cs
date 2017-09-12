@@ -58,7 +58,7 @@ public class Ship : MonoBehaviour {
     {
         if(lives == 0)
         {
-            SceneManager.LoadScene("LevelEnd");
+            SceneManager.LoadScene("TitleScreen");
         }
         else
         {

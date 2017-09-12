@@ -1,17 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShipMissile : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+    //public int score;
+    //public Text scoreGUI;
+
+    // Use this for initialization
+    void Start () {
+
+        //score = 0;
+        //scoreGUI.text = "Score: " + score.ToString();
 
         StartCoroutine(destroyMissile());
-	}//end Start function
-	
-	// Update is called once per frame
-	void Update () {
+
+    }//end Start function
+
+    // Update is called once per frame
+    void Update () {
 
         gameObject.transform.Translate(Vector3.up * 50.0f * Time.deltaTime);
 
@@ -37,6 +45,8 @@ public class ShipMissile : MonoBehaviour {
     {
         if(collider.CompareTag("Enemy"))
         {
+            //score += Random.Range(10, 100);
+
             //Implement a Die() function in Alien10/20/30 script
             //Alien10 alien10 = collider.gameObject.GetComponent<Alien10>();
             //alien10.Die();
@@ -46,10 +56,51 @@ public class ShipMissile : MonoBehaviour {
             Destroy(gameObject);
         }
 
+        if(collider.CompareTag("Alien10"))
+        {
+            //score += 10;
+
+            //Destroy alien 10
+            Alien10 alien_10 = collider.gameObject.GetComponent<Alien10>();
+            alien_10.Die();
+
+            //Destroy myself
+            Destroy(gameObject);
+        }
+
+        else if (collider.CompareTag("Alien20"))
+        {
+            //score += 20;
+
+            //Destroy alien 20
+            Alien20 alien_20 = collider.gameObject.GetComponent<Alien20>();
+            alien_20.Die();
+
+            //Destroy myself
+            Destroy(gameObject);
+        }
+
+        else if (collider.CompareTag("Alien30"))
+        {
+            //score += 30;
+
+            //Destroy alien 30
+            Alien30 alien_30 = collider.gameObject.GetComponent<Alien30>();
+            alien_30.Die();
+
+            //Destroy myself
+            Destroy(gameObject);
+        }
+
+
+
         else if (collider.CompareTag("Base"))
         {
             Destroy(collider.gameObject);
             Destroy(gameObject);
         }
+
+        //scoreGUI.text = "Score: " + score.ToString();
+
     }
 }
