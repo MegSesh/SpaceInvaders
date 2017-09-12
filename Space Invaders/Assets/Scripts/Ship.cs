@@ -18,6 +18,10 @@ public class Ship : MonoBehaviour {
     //public GUIText livesGUI;
     public Text livesGUI;
 
+    public AudioClip deathSound;
+
+    GameObject cameraShake;
+
 	// Use this for initialization
 	void Start () {
         speed = 20.0f;
@@ -27,6 +31,8 @@ public class Ship : MonoBehaviour {
         alienArmyStartPos = alienArmy.transform.position;
 
         livesGUI.text = "Lives: " + lives.ToString();
+
+        cameraShake = GameObject.Find("Main Camera");
 	}//end Start function
 	
 	// Update is called once per frame
@@ -62,6 +68,11 @@ public class Ship : MonoBehaviour {
         }
         else
         {
+            AudioSource.PlayClipAtPoint(deathSound, gameObject.transform.position);
+
+            CameraShake camShakeScript = cameraShake.GetComponent<CameraShake>();
+            camShakeScript.ShakeCamera(20.0f, 1.0f);
+
             lives--;
             livesGUI.text = "Lives: " + lives.ToString();
 
@@ -73,9 +84,7 @@ public class Ship : MonoBehaviour {
 
             alienArmyScript.direction = 1.0f;
         }
-
-
-    }
+    }//end Attacked function
 
     IEnumerator Wait(int secToWait)
     {
