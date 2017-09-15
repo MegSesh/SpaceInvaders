@@ -9,6 +9,7 @@ TagManager:
   - Alien10
   - Alien20
   - Alien30
+  - AlienShip
   layers:
   - Default
   - TransparentFX

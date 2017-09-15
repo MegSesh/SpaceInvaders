@@ -1052,6 +1052,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 0
+  alienShip: {fileID: 1581610436854218, guid: 2dec3bf163048704887c740d030768d3, type: 2}
+  alienShipLaunchTime: 0
 --- !u!4 &264077284
 Transform:
   m_ObjectHideFlags: 0

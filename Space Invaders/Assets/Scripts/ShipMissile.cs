@@ -58,8 +58,6 @@ public class ShipMissile : MonoBehaviour {
 
         if(collider.CompareTag("Alien10"))
         {
-            //score += 10;
-
             //Destroy alien 10
             Alien10 alien_10 = collider.gameObject.GetComponent<Alien10>();
             alien_10.Die();
@@ -70,8 +68,6 @@ public class ShipMissile : MonoBehaviour {
 
         else if (collider.CompareTag("Alien20"))
         {
-            //score += 20;
-
             //Destroy alien 20
             Alien20 alien_20 = collider.gameObject.GetComponent<Alien20>();
             alien_20.Die();
@@ -82,11 +78,19 @@ public class ShipMissile : MonoBehaviour {
 
         else if (collider.CompareTag("Alien30"))
         {
-            //score += 30;
-
             //Destroy alien 30
             Alien30 alien_30 = collider.gameObject.GetComponent<Alien30>();
             alien_30.Die();
+
+            //Destroy myself
+            Destroy(gameObject);
+        }
+
+        else if (collider.CompareTag("AlienShip"))
+        {
+            //Destroy alien 30
+            AlienShip alien_ship = collider.gameObject.GetComponent<AlienShip>();
+            alien_ship.Die();
 
             //Destroy myself
             Destroy(gameObject);
