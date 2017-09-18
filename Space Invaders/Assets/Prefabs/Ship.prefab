@@ -221,7 +221,7 @@ GameObject:
   - component: {fileID: 114437036405455886}
   m_Layer: 0
   m_Name: Ship
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1727,3 +1727,8 @@ MonoBehaviour:
   speed: 20
   shipMissile: {fileID: 1570657090135452, guid: b60c2b488e1298e41a3cc7e5de31497c,
     type: 2}
+  lives: 0
+  alienArmy: {fileID: 0}
+  alienArmyStartPos: {x: 0, y: 0, z: 0}
+  livesGUI: {fileID: 0}
+  deathSound: {fileID: 8300000, guid: 43c49a40698b6f6419941127fde81604, type: 3}

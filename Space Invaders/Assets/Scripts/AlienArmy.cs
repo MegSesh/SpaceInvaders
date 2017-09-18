@@ -23,25 +23,15 @@ public class AlienArmy : MonoBehaviour {
         if (objPos.x >= 48)
         {
             direction = -1.0f;
-            
-            //objPos.y -= 15.0f;
-
             Vector3 newPos = new Vector3(objPos.x, objPos.y - 8.0f, objPos.z);
             gameObject.transform.position = newPos;
-
-            //gameObject.transform.Translate(newPos);
         }
 
         else if (objPos.x <= -48)
         {
             direction = 1.0f;
-
-            //objPos.y -= 15.0f;
-
             Vector3 newPos = new Vector3(objPos.x, objPos.y - 8.0f, objPos.z);
             gameObject.transform.position = newPos;
-
-            //gameObject.transform.Translate(newPos);
         }
 
     }

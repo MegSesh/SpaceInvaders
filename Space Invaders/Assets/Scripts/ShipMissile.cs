@@ -5,15 +5,12 @@ using UnityEngine.UI;
 
 public class ShipMissile : MonoBehaviour {
 
-    //public int score;
-    //public Text scoreGUI;
+    float speed;
 
     // Use this for initialization
     void Start () {
 
-        //score = 0;
-        //scoreGUI.text = "Score: " + score.ToString();
-
+        speed = 50.0f;
         StartCoroutine(destroyMissile());
 
     }//end Start function
@@ -21,9 +18,9 @@ public class ShipMissile : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 
-        gameObject.transform.Translate(Vector3.up * 50.0f * Time.deltaTime);
+        gameObject.transform.Translate(Vector3.up * speed * Time.deltaTime);
 
-	}//end Update function
+    }//end Update function
 
     /*
      * How to destroy the missile after 5 seconds
@@ -36,20 +33,15 @@ public class ShipMissile : MonoBehaviour {
     }//end destroyMissile function
 
     /*
-     * Since we have "Is Trigger" selected in 
-     * ShipMissile prefab's Capsule Collider component
-     * we can't use OnCollisionEnter.
+     * Since we have "Is Trigger" selected in ShipMissile prefab's 
+     * Capsule Collider component we can't use OnCollisionEnter.
      * Must use OnTriggerEnter
      */ 
      void OnTriggerEnter(Collider collider)
     {
         if(collider.CompareTag("Enemy"))
         {
-            //score += Random.Range(10, 100);
-
-            //Implement a Die() function in Alien10/20/30 script
-            //Alien10 alien10 = collider.gameObject.GetComponent<Alien10>();
-            //alien10.Die();
+            //Destroy Enemy
             Destroy(collider.gameObject);
 
             //Destroy myself
@@ -96,15 +88,66 @@ public class ShipMissile : MonoBehaviour {
             Destroy(gameObject);
         }
 
-
-
         else if (collider.CompareTag("Base"))
         {
+            //Destroy base
             Destroy(collider.gameObject);
+
+            //Destroy myself
             Destroy(gameObject);
         }
 
-        //scoreGUI.text = "Score: " + score.ToString();
+        else if(collider.CompareTag("LeftBarrier") || collider.CompareTag("RightBarrier"))
+        {
+            Quaternion origin = gameObject.transform.rotation;
+            origin = Quaternion.Inverse(origin);
+            gameObject.transform.rotation = origin;
+        }
 
-    }
+        else if (collider.CompareTag("TopBarrier"))
+        {
+            //Quaternion rotateBy;
+
+            //if (collider.CompareTag("TopBarrier"))
+            //{
+            //    rotateBy = Quaternion.AngleAxis(180, Vector3.down);
+            //}
+            //else
+            //{
+            //    rotateBy = Quaternion.AngleAxis(180, Vector3.up);
+            //}
+
+            //Quaternion origin = gameObject.transform.rotation;
+            //Debug.Log("origin: " + origin);
+
+            //rotateBy = Quaternion.Euler(0.0f, 180.0f, 0.0f);
+            //rotateBy = Quaternion.Euler(-origin.eulerAngles);
+
+            //origin = origin * rotateBy;
+            //origin = rotateBy;
+            //Debug.Log("new origin: " + origin);
+            //gameObject.transform.rotation = origin;
+
+
+            Vector3 normal = new Vector3(0.0f, -1.0f, 0.0f);
+            transform.up = Vector3.Reflect(transform.up, normal);
+        }
+
+        else if(collider.CompareTag("BottomBarrier"))
+        {
+            Vector3 normal = new Vector3(0.0f, 1.0f, 0.0f);
+            transform.up = Vector3.Reflect(transform.up, normal);
+        }
+
+        //Ship can get killed by its own missile too
+        else if(collider.CompareTag("Player"))
+        {
+            //Destroy player
+            collider.SendMessage("Attacked", SendMessageOptions.DontRequireReceiver);
+
+            //Destroy myself
+            Destroy(gameObject);
+        }
+
+    }//end OnTriggerEnter function
 }

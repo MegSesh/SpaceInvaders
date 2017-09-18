@@ -40,4 +40,14 @@ public class Alien10 : MonoBehaviour {
 
         Destroy(gameObject);
     }
+
+
+    void OnTriggerEnter(Collider collider)
+    {
+        if(collider.CompareTag("WholeBase"))
+        {
+            //Destroy base
+            Destroy(collider.gameObject);
+        }
+    }
 }

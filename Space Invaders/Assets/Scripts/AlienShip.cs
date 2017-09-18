@@ -12,7 +12,7 @@ public class AlienShip : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        speed = 10.0f;
+        speed = Random.Range(15.0f, 30.0f);
         direction = 1.0f;
         pointValue = Random.Range(10, 100);
     }
@@ -24,6 +24,7 @@ public class AlienShip : MonoBehaviour {
 
         Vector3 objPos = gameObject.transform.position;
 
+        //Destroy alien ship if it goes outside screen coordinates
         if (objPos.x >= 145 || objPos.x <= -145)
         {
             Destroy(gameObject);

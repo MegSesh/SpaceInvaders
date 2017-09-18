@@ -39,6 +39,7 @@ public class Ship : MonoBehaviour {
 	void Update () {
 
         Vector3 objPos = gameObject.transform.position;
+        Quaternion objRot = gameObject.transform.rotation;
 
         if (Input.GetKey("right") && objPos.x < 120.0)
         {
@@ -53,6 +54,47 @@ public class Ship : MonoBehaviour {
         if(Input.GetKeyDown("space"))   //GetKeyDown makes sure to spawn only once per press, vs constantly with GetKey
         {
             GameObject missileToSpawn = Instantiate(shipMissile, objPos, Quaternion.identity) as GameObject;
+        }
+
+        //Want to instantiate bullets for mouse click
+        //https://docs.unity3d.com/ScriptReference/Input-mousePosition.html
+        //Convert Vector2 mouse pos to angle --> http://answers.unity3d.com/questions/189870/convert-vector2-mouse-position-into-angle.html
+        if (Input.GetMouseButtonDown(0))
+        {
+
+            //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Vector3 mousePos = Input.mousePosition;
+            //mousePos.z = 10.0f;
+            Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(mousePos);
+            mouseWorldPos.z = 10.0f;
+
+            //Debug.Log("mousePixelPos:" + mousePos);
+            //Debug.Log("mouse world pos: " + mouseWorldPos);
+
+            //if (Physics.Raycast(ray))
+            //{
+
+            Vector3 spawnDirection = mouseWorldPos - objPos;    //Input.mousePosition - objPos;      //NEED TO CONVERT MOUSE PIXEL POS TO WORLD POS FIRST
+
+            //Debug.Log("obj pos: " + objPos);
+            //Debug.Log("spawn direction: " + spawnDirection);
+
+            //Convert the x and y of spawnDirection into an angle to feed into z
+            float angleRadians = Mathf.Atan2(spawnDirection.y, spawnDirection.x);
+            float angleDeg = angleRadians * Mathf.Rad2Deg;
+
+            //Debug.Log("angle radians: " + angleRadians);
+            //Debug.Log("degrees: " + angleDeg); 
+
+
+            Quaternion spawnDirQuat = Quaternion.Euler(0.0f, 0.0f, angleDeg - 90.0f);
+            //Quaternion spawnDirQuat = Quaternion.Euler(0.0f, 0.0f, 90.0f);
+
+            float offsetFactor = 10.0f;
+            Vector3 posOffset = spawnDirection.normalized * offsetFactor;
+
+            GameObject missileToSpawn = Instantiate(shipMissile, objPos + posOffset, spawnDirQuat) as GameObject;
+            //}
         }
 
     }//end Update function

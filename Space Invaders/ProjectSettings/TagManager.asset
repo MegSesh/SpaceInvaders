@@ -10,6 +10,11 @@ TagManager:
   - Alien20
   - Alien30
   - AlienShip
+  - LeftBarrier
+  - TopBarrier
+  - BottomBarrier
+  - RightBarrier
+  - WholeBase
   layers:
   - Default
   - TransparentFX
