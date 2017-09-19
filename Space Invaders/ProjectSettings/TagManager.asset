@@ -15,6 +15,7 @@ TagManager:
   - BottomBarrier
   - RightBarrier
   - WholeBase
+  - Camera2DMap
   layers:
   - Default
   - TransparentFX

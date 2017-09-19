@@ -16,8 +16,10 @@ public class ExitButton : MonoBehaviour {
 		
 	}
 
-    void OnClick()
-    {
-        SceneManager.LoadScene("TitleScreen");
-    }
+    //NOT CORRECT
+    //void onClick()
+    //{
+    //    Debug.Log("im being clicked");
+    //    SceneManager.LoadScene("TitleScreen");
+    //}
 }

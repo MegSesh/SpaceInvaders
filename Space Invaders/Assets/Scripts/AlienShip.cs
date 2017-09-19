@@ -10,9 +10,11 @@ public class AlienShip : MonoBehaviour {
     public int pointValue;
     public AudioClip deathSound;
 
+    public GameObject deathExplosion;
+
     // Use this for initialization
     void Start () {
-        speed = Random.Range(15.0f, 30.0f);
+        speed = Random.Range(20.0f, 40.0f);
         direction = 1.0f;
         pointValue = Random.Range(10, 100);
     }
@@ -24,8 +26,8 @@ public class AlienShip : MonoBehaviour {
 
         Vector3 objPos = gameObject.transform.position;
 
-        //Destroy alien ship if it goes outside screen coordinates
-        if (objPos.x >= 145 || objPos.x <= -145)
+        //Destroy alien ship if it goes outside screen coordinates in x and y
+        if (objPos.x >= 145 || objPos.x <= -145 || objPos.y <= -85 || objPos.y >= 105)
         {
             Destroy(gameObject);
         }
@@ -36,9 +38,11 @@ public class AlienShip : MonoBehaviour {
     {
         AudioSource.PlayClipAtPoint(deathSound, gameObject.transform.position);
 
-        GameObject globalObj = GameObject.Find("GlobalObject");
-        Global g = globalObj.GetComponent<Global>();
-        g.score += pointValue;
+        GameObject explosion = Instantiate(deathExplosion, gameObject.transform.position, Quaternion.identity) as GameObject;   //Quaternion.AngleAxis(-90, Vector3.right)
+
+        //GameObject globalObj = GameObject.Find("GlobalObject");
+        //Global g = globalObj.GetComponent<Global>();
+        //g.score += pointValue;
 
         Destroy(gameObject);
     }

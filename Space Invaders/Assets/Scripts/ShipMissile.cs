@@ -28,7 +28,7 @@ public class ShipMissile : MonoBehaviour {
      */
     IEnumerator destroyMissile()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(10);
         Destroy(gameObject);
     }//end destroyMissile function
 
@@ -83,6 +83,13 @@ public class ShipMissile : MonoBehaviour {
             //Destroy alien 30
             AlienShip alien_ship = collider.gameObject.GetComponent<AlienShip>();
             alien_ship.Die();
+
+            //Different scoring for alien ship
+            GameObject globalObj = GameObject.Find("GlobalObject");
+            Global g = globalObj.GetComponent<Global>();
+
+            int pt = alien_ship.pointValue;
+            g.score += 3 * pt;
 
             //Destroy myself
             Destroy(gameObject);

@@ -18,21 +18,37 @@ public class Ship : MonoBehaviour {
     //public GUIText livesGUI;
     public Text livesGUI;
 
+    public int ammo;
+    public Text ammoGUI;
+
     public AudioClip deathSound;
 
     GameObject cameraShake;
+
+    private float offsetFactor;
+
+    public GameObject deathExplosion;
+
+    private float degOffset;
 
 	// Use this for initialization
 	void Start () {
         speed = 20.0f;
         lives = 3;
+        ammo = 60;
 
         alienArmy = GameObject.Find("AlienArmy");
         alienArmyStartPos = alienArmy.transform.position;
 
         livesGUI.text = "Lives: " + lives.ToString();
 
+        ammoGUI.text = "Ammo: " + ammo.ToString();
+
         cameraShake = GameObject.Find("Main Camera");
+
+        offsetFactor = 8.0f;
+
+        degOffset = 0.0f;
 	}//end Start function
 	
 	// Update is called once per frame
@@ -53,49 +69,67 @@ public class Ship : MonoBehaviour {
 
         if(Input.GetKeyDown("space"))   //GetKeyDown makes sure to spawn only once per press, vs constantly with GetKey
         {
-            GameObject missileToSpawn = Instantiate(shipMissile, objPos, Quaternion.identity) as GameObject;
+            Vector3 dir = new Vector3(0.0f, 1.0f, 0.0f);
+            Vector3 posOffset = dir.normalized * offsetFactor;
+
+            Quaternion spawnDirQuat = Quaternion.Euler(0.0f, 0.0f, degOffset);
+
+            //GameObject missileToSpawn = Instantiate(shipMissile, objPos + posOffset, Quaternion.identity) as GameObject;
+            GameObject missileToSpawn = Instantiate(shipMissile, objPos + posOffset, spawnDirQuat) as GameObject;
+            ammo--;
+        }
+
+        if (Input.GetKey("up"))
+        {
+            degOffset += 5.0f;
+        }
+
+        if (Input.GetKey("down"))
+        {
+            degOffset -= 5.0f;
         }
 
         //Want to instantiate bullets for mouse click
         //https://docs.unity3d.com/ScriptReference/Input-mousePosition.html
         //Convert Vector2 mouse pos to angle --> http://answers.unity3d.com/questions/189870/convert-vector2-mouse-position-into-angle.html
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))// && Input.mousePosition.y > -85)  //take care of exit button
         {
-
-            //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            
             Vector3 mousePos = Input.mousePosition;
             //mousePos.z = 10.0f;
             Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(mousePos);
+
+            //Debug.Log("mousepos : " + mousePos);
+            //Debug.Log("world mouse pos: " + mouseWorldPos);
+
             mouseWorldPos.z = 10.0f;
 
-            //Debug.Log("mousePixelPos:" + mousePos);
-            //Debug.Log("mouse world pos: " + mouseWorldPos);
-
-            //if (Physics.Raycast(ray))
-            //{
-
-            Vector3 spawnDirection = mouseWorldPos - objPos;    //Input.mousePosition - objPos;      //NEED TO CONVERT MOUSE PIXEL POS TO WORLD POS FIRST
-
-            //Debug.Log("obj pos: " + objPos);
-            //Debug.Log("spawn direction: " + spawnDirection);
+            Vector3 spawnDirection = mouseWorldPos - objPos;
 
             //Convert the x and y of spawnDirection into an angle to feed into z
             float angleRadians = Mathf.Atan2(spawnDirection.y, spawnDirection.x);
             float angleDeg = angleRadians * Mathf.Rad2Deg;
 
-            //Debug.Log("angle radians: " + angleRadians);
-            //Debug.Log("degrees: " + angleDeg); 
-
-
             Quaternion spawnDirQuat = Quaternion.Euler(0.0f, 0.0f, angleDeg - 90.0f);
-            //Quaternion spawnDirQuat = Quaternion.Euler(0.0f, 0.0f, 90.0f);
 
-            float offsetFactor = 10.0f;
             Vector3 posOffset = spawnDirection.normalized * offsetFactor;
 
             GameObject missileToSpawn = Instantiate(shipMissile, objPos + posOffset, spawnDirQuat) as GameObject;
+            
+
+            //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            //Debug.Log("ray: " + ray);
+            //if (Physics.Raycast(ray))
+            //{
+            //    GameObject missileToSpawn = Instantiate(shipMissile, objPos + posOffset, spawnDirQuat) as GameObject;
+            //    Instantiate(particle, transform.position, transform.rotation);
             //}
+
+            ammo--;
         }
+
+
+        ammoGUI.text = "Ammo: " + ammo.ToString();
 
     }//end Update function
 
@@ -111,6 +145,8 @@ public class Ship : MonoBehaviour {
         else
         {
             AudioSource.PlayClipAtPoint(deathSound, gameObject.transform.position);
+
+            GameObject explosion = Instantiate(deathExplosion, gameObject.transform.position, Quaternion.identity) as GameObject;
 
             CameraShake camShakeScript = cameraShake.GetComponent<CameraShake>();
             camShakeScript.ShakeCamera(20.0f, 1.0f);
@@ -132,4 +168,14 @@ public class Ship : MonoBehaviour {
     {
         yield return new WaitForSeconds(secToWait);
     }//end 
+
+
+    void OnTriggerEnter(Collider collider)
+    {
+        if (collider.CompareTag("AlienShip"))
+        {
+            Attacked();
+            Destroy(collider.gameObject);
+        }
+    }
 }

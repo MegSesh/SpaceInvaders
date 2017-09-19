@@ -56,6 +56,10 @@ public class CameraShake : MonoBehaviour {
     {
         isRunning = true;
 
+        Quaternion currentRotation = transform.rotation;// transform.localRotation;
+
+        //Debug.Log("current rot: " + currentRotation);
+
         while (shakeDuration > 0.01f)
         {
             Vector3 rotationAmount = Random.insideUnitSphere * shakeAmount;//A Vector3 to add to the Local Rotation
@@ -68,13 +72,28 @@ public class CameraShake : MonoBehaviour {
 
 
             if (smooth)
+            {
                 transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(rotationAmount), Time.deltaTime * smoothAmount);
+            }
             else
-                transform.localRotation = Quaternion.Euler(rotationAmount);//Set the local rotation the be the rotation amount.
+            {
+                //transform.localRotation = Quaternion.Euler(rotationAmount);//Set the local rotation the be the rotation amount.
+
+                Quaternion newrot = Quaternion.Euler(rotationAmount);
+                transform.rotation = newrot;
+                //Debug.Log("new rotation: " + newrot);
+
+            }
+
+
+           
+
 
             yield return null;
         }
-        transform.localRotation = Quaternion.identity;//Set the local rotation to 0 when done, just to get rid of any fudging stuff.
+
+        //transform.localRotation = currentRotation;//Quaternion.identity;//Set the local rotation to 0 when done, just to get rid of any fudging stuff.
+        transform.rotation = currentRotation;
         isRunning = false;
     }
 }

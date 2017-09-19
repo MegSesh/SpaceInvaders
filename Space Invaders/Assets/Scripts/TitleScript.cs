@@ -19,9 +19,14 @@ public class TitleScript : MonoBehaviour {
     {
         GUILayout.BeginArea(new Rect(10, Screen.height / 2 + 50, Screen.width - 20, 100));
 
-        if (GUILayout.Button("New Game"))
+        if (GUILayout.Button("New Game - Classic Mode"))
         {
             SceneManager.LoadScene("SI_Scene_1");
+        }
+
+        if (GUILayout.Button("New Game - FPS Mode"))
+        {
+            SceneManager.LoadScene("SI_Scene_2");
         }
 
         if (GUILayout.Button("High score"))

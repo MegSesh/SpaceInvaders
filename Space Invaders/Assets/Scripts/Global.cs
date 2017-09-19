@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Global : MonoBehaviour {
 
@@ -9,9 +10,12 @@ public class Global : MonoBehaviour {
     public GameObject alienShip;
     float counter;
     public float alienShipLaunchTime;
-    public GameObject ship;
+    private GameObject ship;
     Vector3 shipPos;
 
+    //public Button exitButton;
+
+    public AudioClip gameSound;
 
 
     // Use this for initialization
@@ -21,10 +25,20 @@ public class Global : MonoBehaviour {
         ship = GameObject.Find("Ship");
         //shipPos = ship.transform.position;
 
+        //Button btn = exitButton.GetComponent<ExitButton>();
+        //btn.onClick.AddListener(TaskOnClick);
+
 	}//end Start function
+
+    //void TaskOnClick()
+    //{
+    //    Debug.Log("clicked the button!");
+    //}
 	
 	// Update is called once per frame
 	void Update () {
+
+        AudioSource.PlayClipAtPoint(gameSound, gameObject.transform.position);
 
         //Where I want to spawn alien ship from 
         //Vector3 objPos = new Vector3(-135.0f, 86.0f, 10.0f);
@@ -50,6 +64,13 @@ public class Global : MonoBehaviour {
                 float angleRadians = Mathf.Atan2(dirFromShipToAlien.y, dirFromShipToAlien.x);
                 float angleDeg = angleRadians * Mathf.Rad2Deg;
                 spawnDir = Quaternion.Euler(0.0f, 0.0f, angleDeg);
+
+                //AlienShip alienshipobj = alienShip.GetComponent<AlienShip>();
+                //Debug.Log("point value original: " + alienshipobj.pointValue);
+                //alienshipobj.pointValue *= 3;
+                //Debug.Log("point value new: " + alienshipobj.pointValue);
+                
+
             }
             else
             {
@@ -57,7 +78,7 @@ public class Global : MonoBehaviour {
                 spawnDir = Quaternion.identity;
             }
 
-            GameObject missileToSpawn = Instantiate(alienShip, spawnPos, spawnDir) as GameObject;
+            GameObject alienship = Instantiate(alienShip, spawnPos, spawnDir) as GameObject;
             LaunchReset();
         }
     }//end Update function

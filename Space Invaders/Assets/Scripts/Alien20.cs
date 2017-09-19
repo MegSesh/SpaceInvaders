@@ -8,6 +8,7 @@ public class Alien20 : MonoBehaviour {
 
     public AudioClip deathSound;
 
+    public GameObject deathExplosion;
     //public GameObject scoreUI;
 
     // Use this for initialization
@@ -33,7 +34,7 @@ public class Alien20 : MonoBehaviour {
         //ScoreUI scoreScript = scoreUI.GetComponent<ScoreUI>();
         //scoreScript.score += pointValue;
 
-
+        GameObject explosion = Instantiate(deathExplosion, gameObject.transform.position, Quaternion.identity) as GameObject;   //Quaternion.AngleAxis(-90, Vector3.right)
 
         GameObject globalObj = GameObject.Find("GlobalObject");
         Global g = globalObj.GetComponent<Global>();
