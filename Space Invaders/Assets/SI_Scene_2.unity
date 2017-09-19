@@ -3018,7 +3018,8 @@ Prefab:
       propertyPath: ammoGUI
       value: 
       objectReference: {fileID: 2012684133}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114437036405455886, guid: 1cb194ba0fec1204ea8b2458f0687406, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 1cb194ba0fec1204ea8b2458f0687406, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1130116446
@@ -3290,6 +3291,34 @@ Transform:
   m_PrefabParentObject: {fileID: 4900411233030712, guid: 2997b7470a8b9694dbcf49d2eeaf64c5,
     type: 2}
   m_PrefabInternal: {fileID: 1093614343}
+--- !u!1 &1233553572 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1534772313466224, guid: 1cb194ba0fec1204ea8b2458f0687406,
+    type: 2}
+  m_PrefabInternal: {fileID: 1127950599}
+--- !u!114 &1233553573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1233553572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02b36c4c1498e5845b72a745d00b3c07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  shipMissile: {fileID: 1570657090135452, guid: b60c2b488e1298e41a3cc7e5de31497c,
+    type: 2}
+  lives: 0
+  alienArmy: {fileID: 0}
+  alienArmyStartPos: {x: 0, y: 0, z: 0}
+  livesGUI: {fileID: 1322322570}
+  ammo: 0
+  ammoGUI: {fileID: 2012684133}
+  deathSound: {fileID: 8300000, guid: 43c49a40698b6f6419941127fde81604, type: 3}
+  deathExplosion: {fileID: 1000010823978654, guid: 3228a22491941734bb83ad691d17fcb9,
+    type: 2}
 --- !u!1 &1322322568
 GameObject:
   m_ObjectHideFlags: 0
