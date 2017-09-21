@@ -5,17 +5,12 @@ using UnityEngine;
 public class Alien10 : MonoBehaviour {
 
     public int pointValue;
-
     public AudioClip deathSound;
-
     public GameObject deathExplosion;
-
-    //public GameObject scoreUI;
 
 	// Use this for initialization
 	void Start () {
         pointValue = 10;
-        //scoreUI = GameObject.Find("ScoreUI");
     }
 	
 	// Update is called once per frame
@@ -26,17 +21,7 @@ public class Alien10 : MonoBehaviour {
     public void Die()
     {
         AudioSource.PlayClipAtPoint(deathSound, gameObject.transform.position);
-
-        //GameObject scoreObj = GameObject.Find("ScoreObject");
-        //Global score_g = scoreObj.GetComponent<ScoreUI>();
-        //score_g.score += pointValue;
-
-        //GameObject scoreObj = GameObject.Find("ScoreObject");
-        //ScoreUI scoreScript = scoreUI.GetComponent<ScoreUI>();
-        //scoreScript.score += pointValue;
-
-        GameObject explosion = Instantiate(deathExplosion, gameObject.transform.position, Quaternion.identity) as GameObject;   //Quaternion.AngleAxis(-90, Vector3.right)
-
+        GameObject explosion = Instantiate(deathExplosion, gameObject.transform.position, Quaternion.identity) as GameObject;
 
         GameObject globalObj = GameObject.Find("GlobalObject");
         Global g = globalObj.GetComponent<Global>();

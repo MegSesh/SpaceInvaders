@@ -1,0 +1,136 @@
+Initialize engine version: 2017.1.0f3 (472613c02cf7)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GT 750M (ID=0xfe9)
+    Vendor:   NVIDIA
+    VRAM:     2016 MB
+    Driver:   21.21.13.7651
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Meghana Seshadri\Desktop\CIS568_GameDesign\Proj1-SpaceInvaders\GithubRepo\SpaceInvaders\executables\spaceinvaders_build_6_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Meghana Seshadri\Desktop\CIS568_GameDesign\Proj1-SpaceInvaders\GithubRepo\SpaceInvaders\executables\spaceinvaders_build_6_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Meghana Seshadri\Desktop\CIS568_GameDesign\Proj1-SpaceInvaders\GithubRepo\SpaceInvaders\executables\spaceinvaders_build_6_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Meghana Seshadri\Desktop\CIS568_GameDesign\Proj1-SpaceInvaders\GithubRepo\SpaceInvaders\executables\spaceinvaders_build_6_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Meghana Seshadri\Desktop\CIS568_GameDesign\Proj1-SpaceInvaders\GithubRepo\SpaceInvaders\executables\spaceinvaders_build_6_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Meghana Seshadri\Desktop\CIS568_GameDesign\Proj1-SpaceInvaders\GithubRepo\SpaceInvaders\executables\spaceinvaders_build_6_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Meghana Seshadri\Desktop\CIS568_GameDesign\Proj1-SpaceInvaders\GithubRepo\SpaceInvaders\executables\spaceinvaders_build_6_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\Meghana Seshadri\Desktop\CIS568_GameDesign\Proj1-SpaceInvaders\GithubRepo\SpaceInvaders\executables\spaceinvaders_build_6_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\Meghana Seshadri\Desktop\CIS568_GameDesign\Proj1-SpaceInvaders\GithubRepo\SpaceInvaders\executables\spaceinvaders_build_6_Data\Managed\UnityEngine.Timeline.dll (this message is harmless)
+Loading C:\Users\Meghana Seshadri\Desktop\CIS568_GameDesign\Proj1-SpaceInvaders\GithubRepo\SpaceInvaders\executables\spaceinvaders_build_6_Data\Managed\UnityEngine.Timeline.dll into Unity Child Domain
+Platform assembly: C:\Users\Meghana Seshadri\Desktop\CIS568_GameDesign\Proj1-SpaceInvaders\GithubRepo\SpaceInvaders\executables\spaceinvaders_build_6_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
+Loading C:\Users\Meghana Seshadri\Desktop\CIS568_GameDesign\Proj1-SpaceInvaders\GithubRepo\SpaceInvaders\executables\spaceinvaders_build_6_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
+Platform assembly: C:\Users\Meghana Seshadri\Desktop\CIS568_GameDesign\Proj1-SpaceInvaders\GithubRepo\SpaceInvaders\executables\spaceinvaders_build_6_Data\Managed\System.dll (this message is harmless)
+Platform assembly: C:\Users\Meghana Seshadri\Desktop\CIS568_GameDesign\Proj1-SpaceInvaders\GithubRepo\SpaceInvaders\executables\spaceinvaders_build_6_Data\Managed\System.Core.dll (this message is harmless)
+- Completed reload, in  0.183 seconds
+<RI> Initializing input.
+XInput1_3.dll not found. Trying XInput9_1_0.dll instead...
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 0.774702 ms
+Setting up 4 worker threads for Enlighten.
+  Thread -> id: 49a4 -> priority: 1 
+  Thread -> id: 4a98 -> priority: 1 
+  Thread -> id: 4afc -> priority: 1 
+  Thread -> id: 3870 -> priority: 1 
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 4.084121 ms
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 20300.
+Total: 2.859048 ms (FindLiveObjects: 0.857632 ms CreateObjectMapping: 0.291488 ms MarkObjects: 1.688990 ms  DeleteObjects: 0.020116 ms)
+
+spawn pos: (8.8, -67.0, 10.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+spawn dir: (0.0, 0.0, 0.0, 1.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+spawn pos: (-11.2, -67.0, 10.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+spawn dir: (0.0, 0.0, 0.0, 1.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+spawn pos: (6.9, -67.0, 10.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+spawn dir: (0.0, 0.0, 0.0, 1.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+spawn pos: (6.9, -67.0, 10.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+spawn dir: (0.0, 0.0, 0.0, 1.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+spawn pos: (6.9, -67.0, 10.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+spawn dir: (0.0, 0.0, 0.0, 1.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+spawn pos: (12.6, -67.0, 10.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+spawn dir: (0.0, 0.0, 0.0, 1.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+spawn pos: (-10.5, -67.0, 10.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+spawn dir: (0.0, 0.0, 0.0, 1.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+spawn pos: (4.6, -67.0, 10.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+spawn dir: (0.0, 0.0, 0.0, 1.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+spawn pos: (7.9, -67.0, 10.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+spawn dir: (0.0, 0.0, 0.0, 1.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+spawn pos: (14.3, -67.0, 10.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+spawn dir: (0.0, 0.0, 0.0, 1.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+spawn pos: (9.3, -67.0, 10.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+spawn dir: (0.0, 0.0, 0.0, 1.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+spawn pos: (-2.8, -67.0, 10.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+spawn dir: (0.0, 0.0, 0.0, 1.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+

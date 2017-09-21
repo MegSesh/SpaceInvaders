@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Global : MonoBehaviour {
 
@@ -13,7 +14,7 @@ public class Global : MonoBehaviour {
     private GameObject ship;
     Vector3 shipPos;
 
-    //public Button exitButton;
+    public Button exitButton;
 
     public AudioClip gameSound;
 
@@ -25,18 +26,19 @@ public class Global : MonoBehaviour {
         ship = GameObject.Find("Ship");
         //shipPos = ship.transform.position;
 
-        //Button btn = exitButton.GetComponent<ExitButton>();
-        //btn.onClick.AddListener(TaskOnClick);
+        Button btn = exitButton.GetComponent<Button>();
+        btn.onClick.AddListener(TaskOnClick);
 
-	}//end Start function
+    }//end Start function
 
-    //void TaskOnClick()
-    //{
-    //    Debug.Log("clicked the button!");
-    //}
-	
-	// Update is called once per frame
-	void Update () {
+    void TaskOnClick()
+    {
+        //Debug.Log("clicked the button!");
+        SceneManager.LoadScene("TitleScreen");
+    }
+
+    // Update is called once per frame
+    void Update () {
 
         AudioSource.PlayClipAtPoint(gameSound, gameObject.transform.position);
 
@@ -64,13 +66,6 @@ public class Global : MonoBehaviour {
                 float angleRadians = Mathf.Atan2(dirFromShipToAlien.y, dirFromShipToAlien.x);
                 float angleDeg = angleRadians * Mathf.Rad2Deg;
                 spawnDir = Quaternion.Euler(0.0f, 0.0f, angleDeg);
-
-                //AlienShip alienshipobj = alienShip.GetComponent<AlienShip>();
-                //Debug.Log("point value original: " + alienshipobj.pointValue);
-                //alienshipobj.pointValue *= 3;
-                //Debug.Log("point value new: " + alienshipobj.pointValue);
-                
-
             }
             else
             {

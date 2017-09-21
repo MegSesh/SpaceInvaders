@@ -1475,7 +1475,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!65 &65041120491387566
 BoxCollider:
@@ -1743,10 +1743,10 @@ MonoBehaviour:
   speed: 20
   shipMissile: {fileID: 1570657090135452, guid: b60c2b488e1298e41a3cc7e5de31497c,
     type: 2}
-  lives: 0
   alienArmy: {fileID: 0}
   alienArmyStartPos: {x: 0, y: 0, z: 0}
   livesGUI: {fileID: 0}
+  lives: 0
   ammo: 0
   ammoGUI: {fileID: 0}
   deathSound: {fileID: 8300000, guid: 43c49a40698b6f6419941127fde81604, type: 3}

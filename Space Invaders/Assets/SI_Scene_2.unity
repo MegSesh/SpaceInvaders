@@ -909,6 +909,7 @@ MonoBehaviour:
   score: 0
   alienShip: {fileID: 1581610436854218, guid: 2dec3bf163048704887c740d030768d3, type: 2}
   alienShipLaunchTime: 0
+  exitButton: {fileID: 1959148096}
   gameSound: {fileID: 8300000, guid: 92c615c7e007047d38511e43d4746901, type: 3}
 --- !u!4 &264077284
 Transform:
@@ -4563,7 +4564,6 @@ GameObject:
   - component: {fileID: 1959148098}
   - component: {fileID: 1959148097}
   - component: {fileID: 1959148096}
-  - component: {fileID: 1959148099}
   m_Layer: 5
   m_Name: ExitButton
   m_TagString: Untagged
@@ -4675,17 +4675,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1959148094}
---- !u!114 &1959148099
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1959148094}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7b0e3504ccc8bc41a2d69d9cd95d7ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1962064654 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4532998074168236, guid: 51bd68084e6214a4db8e46984b3e8e39,

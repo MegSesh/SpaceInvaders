@@ -87,9 +87,24 @@ public class ShipMissile : MonoBehaviour {
             //Different scoring for alien ship
             GameObject globalObj = GameObject.Find("GlobalObject");
             Global g = globalObj.GetComponent<Global>();
-
             int pt = alien_ship.pointValue;
             g.score += 3 * pt;
+
+            GameObject shipObj = GameObject.Find("Ship");
+            //GameObject shipObj2 = GameObject.Find("Ship2");
+            Ship s = shipObj.GetComponent<Ship>();
+
+            //if(shipObj2.activeInHierarchy)
+            //{
+            //    Ship2 s2 = shipObj2.GetComponent<Ship2>();
+            //}
+
+            //Ship2 s2 = shipObj.GetComponent<Ship2>();
+            
+
+            int ammoIncrease = 5;
+            s.ammo += ammoIncrease;
+            //s2.ammo += ammoIncrease;
 
             //Destroy myself
             Destroy(gameObject);
@@ -113,29 +128,6 @@ public class ShipMissile : MonoBehaviour {
 
         else if (collider.CompareTag("TopBarrier"))
         {
-            //Quaternion rotateBy;
-
-            //if (collider.CompareTag("TopBarrier"))
-            //{
-            //    rotateBy = Quaternion.AngleAxis(180, Vector3.down);
-            //}
-            //else
-            //{
-            //    rotateBy = Quaternion.AngleAxis(180, Vector3.up);
-            //}
-
-            //Quaternion origin = gameObject.transform.rotation;
-            //Debug.Log("origin: " + origin);
-
-            //rotateBy = Quaternion.Euler(0.0f, 180.0f, 0.0f);
-            //rotateBy = Quaternion.Euler(-origin.eulerAngles);
-
-            //origin = origin * rotateBy;
-            //origin = rotateBy;
-            //Debug.Log("new origin: " + origin);
-            //gameObject.transform.rotation = origin;
-
-
             Vector3 normal = new Vector3(0.0f, -1.0f, 0.0f);
             transform.up = Vector3.Reflect(transform.up, normal);
         }

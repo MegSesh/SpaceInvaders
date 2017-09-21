@@ -69,14 +69,12 @@ public class Ship2 : MonoBehaviour {
             gameObject.transform.Translate(Vector3.left * speed * Time.deltaTime);
         }
 
-        if (Input.GetKeyDown("space"))   //GetKeyDown makes sure to spawn only once per press, vs constantly with GetKey
+        //GetKeyDown makes sure to spawn only once per press, vs constantly with GetKey
+        if (Input.GetKeyDown("space"))   
         {
             Vector3 dir = new Vector3(0.0f, 1.0f, 0.0f);
             Vector3 posOffset = dir.normalized * offsetFactor;
-
             Quaternion spawnDirQuat = Quaternion.Euler(0.0f, 0.0f, degOffset);
-
-            //GameObject missileToSpawn = Instantiate(shipMissile, objPos + posOffset, Quaternion.identity) as GameObject;
             GameObject missileToSpawn = Instantiate(shipMissile, objPos + posOffset, spawnDirQuat) as GameObject;
             ammo--;
         }
@@ -96,23 +94,23 @@ public class Ship2 : MonoBehaviour {
         //Convert Vector2 mouse pos to angle --> http://answers.unity3d.com/questions/189870/convert-vector2-mouse-position-into-angle.html
         if (Input.GetMouseButtonDown(0))// && Input.mousePosition.y > -85)  //take care of exit button
         {
-
             Vector3 mousePos = Input.mousePosition;
             Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(mousePos);
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            Vector3 objScreenPos = Camera.main.WorldToScreenPoint(objPos);
-            Vector3 objViewPos = Camera.main.WorldToViewportPoint(objPos);
+            //Debug.Log("mousepos : " + mousePos);
+            //Debug.Log("world mouse pos: " + mouseWorldPos);
+            //Debug.Log("ray: " + ray);
 
-            Debug.Log("mousepos : " + mousePos);
-            Debug.Log("world mouse pos: " + mouseWorldPos);
-            Debug.Log("ray: " + ray);
-            Debug.Log("obj pos world: " + objPos);
-            Debug.Log("obj screen pos: " + objScreenPos);
-            Debug.Log("obj view pos: " + objViewPos);
+            mouseWorldPos.y = -70.0f;   //make sure missile shoots in front 
+            mouseWorldPos.z = 10.0f;    //make sure missile stays within the z of the game
 
-            mouseWorldPos.y = -70.0f;
-            mouseWorldPos.z = 10.0f;
+            //Vector3 objScreenPos = Camera.main.WorldToScreenPoint(objPos);
+            //Vector3 objViewPos = Camera.main.WorldToViewportPoint(objPos);
+
+            //Debug.Log("obj pos world: " + objPos);
+            //Debug.Log("obj screen pos: " + objScreenPos);
+            //Debug.Log("obj view pos: " + objViewPos);
 
             Vector3 spawnDirection = mouseWorldPos - objPos;
 
@@ -120,20 +118,15 @@ public class Ship2 : MonoBehaviour {
             float angleRadians = Mathf.Atan2(spawnDirection.y, spawnDirection.x);
             float angleDeg = angleRadians * Mathf.Rad2Deg;
 
-            Quaternion spawnDirQuat = Quaternion.Euler(0.0f, 0.0f, angleDeg - 90.0f);
+            Quaternion spawnDirQuat = Quaternion.Euler(0.0f, 0.0f, angleDeg - 90);
 
             Vector3 posOffset = spawnDirection.normalized * offsetFactor;
+            Vector3 spawnPos = new Vector3(objPos.x + posOffset.x, objPos.y + posOffset.y, objPos.z + posOffset.z);
 
-            GameObject missileToSpawn = Instantiate(shipMissile, objPos + posOffset, spawnDirQuat) as GameObject;
+            Debug.Log("spawn pos: " + (objPos + posOffset));
+            Debug.Log("spawn dir: " + spawnDirQuat);
 
-
-            //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            //Debug.Log("ray: " + ray);
-            //if (Physics.Raycast(ray))
-            //{
-            //    GameObject missileToSpawn = Instantiate(shipMissile, objPos + posOffset, spawnDirQuat) as GameObject;
-            //    Instantiate(particle, transform.position, transform.rotation);
-            //}
+            GameObject missileToSpawn = Instantiate(shipMissile, spawnPos, spawnDirQuat) as GameObject;
 
             ammo--;
         }

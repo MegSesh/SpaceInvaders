@@ -8,8 +8,6 @@ public class Ship : MonoBehaviour {
 
     public float speed;
     public GameObject shipMissile;
-
-    public int lives;
     public GameObject alienArmy;
     public Vector3 alienArmyStartPos;
 
@@ -17,18 +15,14 @@ public class Ship : MonoBehaviour {
     //http://answers.unity3d.com/questions/847329/cannot-assign-guitext-to-script.html
     //public GUIText livesGUI;
     public Text livesGUI;
+    public int lives;
 
     public int ammo;
     public Text ammoGUI;
-
     public AudioClip deathSound;
-
-    GameObject cameraShake;
-
-    private float offsetFactor;
-
     public GameObject deathExplosion;
-
+    GameObject cameraShake;
+    private float offsetFactor;
     private float degOffset;
 
 	// Use this for initialization
@@ -36,18 +30,12 @@ public class Ship : MonoBehaviour {
         speed = 20.0f;
         lives = 3;
         ammo = 60;
-
         alienArmy = GameObject.Find("AlienArmy");
         alienArmyStartPos = alienArmy.transform.position;
-
         livesGUI.text = "Lives: " + lives.ToString();
-
         ammoGUI.text = "Ammo: " + ammo.ToString();
-
         cameraShake = GameObject.Find("Main Camera");
-
         offsetFactor = 8.0f;
-
         degOffset = 0.0f;
 	}//end Start function
 	
@@ -67,14 +55,12 @@ public class Ship : MonoBehaviour {
             gameObject.transform.Translate(Vector3.left * speed * Time.deltaTime);
         }
 
-        if(Input.GetKeyDown("space"))   //GetKeyDown makes sure to spawn only once per press, vs constantly with GetKey
+        //GetKeyDown makes sure to spawn only once per press, vs constantly with GetKey
+        if (Input.GetKeyDown("space"))   
         {
             Vector3 dir = new Vector3(0.0f, 1.0f, 0.0f);
             Vector3 posOffset = dir.normalized * offsetFactor;
-
             Quaternion spawnDirQuat = Quaternion.Euler(0.0f, 0.0f, degOffset);
-
-            //GameObject missileToSpawn = Instantiate(shipMissile, objPos + posOffset, Quaternion.identity) as GameObject;
             GameObject missileToSpawn = Instantiate(shipMissile, objPos + posOffset, spawnDirQuat) as GameObject;
             ammo--;
         }
@@ -94,14 +80,8 @@ public class Ship : MonoBehaviour {
         //Convert Vector2 mouse pos to angle --> http://answers.unity3d.com/questions/189870/convert-vector2-mouse-position-into-angle.html
         if (Input.GetMouseButtonDown(0))// && Input.mousePosition.y > -85)  //take care of exit button
         {
-            
             Vector3 mousePos = Input.mousePosition;
-            //mousePos.z = 10.0f;
             Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(mousePos);
-
-            //Debug.Log("mousepos : " + mousePos);
-            //Debug.Log("world mouse pos: " + mouseWorldPos);
-
             mouseWorldPos.z = 10.0f;
 
             Vector3 spawnDirection = mouseWorldPos - objPos;
@@ -109,25 +89,13 @@ public class Ship : MonoBehaviour {
             //Convert the x and y of spawnDirection into an angle to feed into z
             float angleRadians = Mathf.Atan2(spawnDirection.y, spawnDirection.x);
             float angleDeg = angleRadians * Mathf.Rad2Deg;
-
             Quaternion spawnDirQuat = Quaternion.Euler(0.0f, 0.0f, angleDeg - 90.0f);
 
             Vector3 posOffset = spawnDirection.normalized * offsetFactor;
 
             GameObject missileToSpawn = Instantiate(shipMissile, objPos + posOffset, spawnDirQuat) as GameObject;
-            
-
-            //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            //Debug.Log("ray: " + ray);
-            //if (Physics.Raycast(ray))
-            //{
-            //    GameObject missileToSpawn = Instantiate(shipMissile, objPos + posOffset, spawnDirQuat) as GameObject;
-            //    Instantiate(particle, transform.position, transform.rotation);
-            //}
-
             ammo--;
         }
-
 
         ammoGUI.text = "Ammo: " + ammo.ToString();
 
@@ -138,7 +106,7 @@ public class Ship : MonoBehaviour {
      */
     void Attacked()
     {
-        if(lives == 0)
+        if(lives == 0 || ammo <= 0)
         {
             SceneManager.LoadScene("TitleScreen");
         }
@@ -162,6 +130,7 @@ public class Ship : MonoBehaviour {
 
             alienArmyScript.direction = 1.0f;
         }
+
     }//end Attacked function
 
     IEnumerator Wait(int secToWait)

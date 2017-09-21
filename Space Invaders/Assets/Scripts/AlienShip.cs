@@ -38,11 +38,7 @@ public class AlienShip : MonoBehaviour {
     {
         AudioSource.PlayClipAtPoint(deathSound, gameObject.transform.position);
 
-        GameObject explosion = Instantiate(deathExplosion, gameObject.transform.position, Quaternion.identity) as GameObject;   //Quaternion.AngleAxis(-90, Vector3.right)
-
-        //GameObject globalObj = GameObject.Find("GlobalObject");
-        //Global g = globalObj.GetComponent<Global>();
-        //g.score += pointValue;
+        GameObject explosion = Instantiate(deathExplosion, gameObject.transform.position, Quaternion.identity) as GameObject;
 
         Destroy(gameObject);
     }
